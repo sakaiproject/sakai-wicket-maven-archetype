@@ -1,0 +1,151 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.tool.pages;
+
+import org.apache.log4j.Logger;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.html.IHeaderContributor;
+import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import ${package}.logic.ProjectLogic;
+import ${package}.logic.SakaiProxy;
+
+
+/**
+ * This is our base page for our Sakai app. It sets up the containing markup and top navigation.
+ * All top level pages should extend from this page so as to keep the same navigation. The content for those pages will
+ * be rendered in the main area below the top nav.
+ * 
+ * <p>It also allows us to setup the API injection and any other common methods, which are then made available in the other pages.
+ * 
+ * @author Steve Swinsburg (steve.swinsburg@anu.edu.au)
+ *
+ */
+public class BasePage extends WebPage implements IHeaderContributor {
+
+	private static final Logger log = Logger.getLogger(BasePage.class); 
+	
+	@SpringBean(name="${package}.logic.SakaiProxy")
+	protected SakaiProxy sakaiProxy;
+	
+	@SpringBean(name="${package}.logic.ProjectLogic")
+	protected ProjectLogic projectLogic;
+	
+	Link<Void> firstLink;
+	Link<Void> secondLink;
+	Link<Void> thirdLink;
+	
+	
+	public BasePage() {
+		
+		log.debug("BasePage()");
+		
+		
+    	//first link
+		firstLink = new Link<Void>("firstLink") {
+			private static final long serialVersionUID = 1L;
+			public void onClick() {
+				setResponsePage(new FirstPage());
+			}
+		};
+		firstLink.add(new Label("firstLinkLabel",new ResourceModel("link.first")).setRenderBodyOnly(true));
+		firstLink.add(new AttributeModifier("title", true, new ResourceModel("link.first.tooltip")));
+		add(firstLink);
+		
+		
+		
+		//second link
+		secondLink = new Link<Void>("secondLink") {
+			private static final long serialVersionUID = 1L;
+			public void onClick() {
+				setResponsePage(new SecondPage());
+			}
+		};
+		secondLink.add(new Label("secondLinkLabel",new ResourceModel("link.second")).setRenderBodyOnly(true));
+		secondLink.add(new AttributeModifier("title", true, new ResourceModel("link.second.tooltip")));
+		add(secondLink);
+		
+		
+		
+		//third link
+		thirdLink = new Link<Void>("thirdLink") {
+			private static final long serialVersionUID = 1L;
+			public void onClick() {
+				setResponsePage(new ThirdPage());
+			}
+		};
+		thirdLink.add(new Label("thirdLinkLabel",new StringResourceModel("link.third", null, new String[] {"3"})).setRenderBodyOnly(true));
+		thirdLink.add(new AttributeModifier("title", true, new ResourceModel("link.third.tooltip")));
+		add(thirdLink);
+		
+		
+    }
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * This block adds the required wrapper markup to style it like a Sakai tool. 
+	 * Add to this any additional CSS or JS references that you need.
+	 * 
+	 */
+	public void renderHead(IHeaderResponse response) {
+		
+		
+		//get Sakai skin
+		String skinRepo = sakaiProxy.getSkinRepoProperty();
+		String toolCSS = sakaiProxy.getToolSkinCSS(skinRepo);
+		String toolBaseCSS = skinRepo + "/tool_base.css";
+		
+		//Sakai additions
+		response.renderJavascriptReference("/library/js/headscripts.js");
+		response.renderCSSReference(toolBaseCSS);
+		response.renderCSSReference(toolCSS);
+		response.renderOnLoadJavascript("setMainFrameHeight( window.name )");
+		
+		//Tool additions (at end so we can override if required)
+		response.renderString("<meta http-equiv=${symbol_escape}"Content-Type${symbol_escape}" content=${symbol_escape}"text/html; charset=UTF-8${symbol_escape}" />");
+		//response.renderCSSReference("css/my_tool_styles.css");
+		//response.renderJavascriptReference("js/my_tool_javascript.js");
+		
+	}
+	
+	
+	/** 
+	 * Helper to disable a link. Add the Sakai class 'current'.
+	 */
+	protected void disableLink(Link<Void> l) {
+		l.add(new AttributeAppender("class", new Model<String>("current"), " "));
+		l.setRenderBodyOnly(true);
+		l.setEnabled(false);
+	}
+	
+	
+	
+}
