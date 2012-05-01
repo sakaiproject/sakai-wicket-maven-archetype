@@ -79,9 +79,9 @@
 	</licenses>
 	
 	<scm>
-    	<connection>scm:svn:https://source.sakaiproject.org/contrib/swinsburg/sakai-maven-archetype/archetype/trunk</connection>
-    	<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/swinsburg/sakai-maven-archetype/archetype/trunk</developerConnection>
-    	<url>https://source.sakaiproject.org/contrib/swinsburg/sakai-maven-archetype/archetype/trunk</url>
+    	<connection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</connection>
+    	<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</developerConnection>
+    	<url>https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</url>
   	</scm>
   
 </project>
