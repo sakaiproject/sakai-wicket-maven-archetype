@@ -7,7 +7,7 @@
   <version>1.2-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
-  <name>Sakai Maven Archetype</name>
+  <name>Sakai Wicket Maven Archetype</name>
 
   <developers>
     <developer>
