@@ -32,6 +32,12 @@
         <artifactId>archetype-packaging</artifactId>
         <version>2.0</version>
       </extension>
+      
+	  <extension>
+		<groupId>org.apache.maven.wagon</groupId>
+		<artifactId>wagon-ssh-external</artifactId>
+		<version>2.2</version>
+	  </extension>
     </extensions>
 
     <pluginManagement>
@@ -49,13 +55,13 @@
       <uniqueVersion>false</uniqueVersion>
       <id>sakai-maven2-scp</id>
       <name>Sakai maven2 repository</name>
-      <url>scp://source.sakaiproject.org/var/www/html/maven2</url>
+      <url>scpexe://source.sakaiproject.org/var/www/html/maven2</url>
     </repository>
     <snapshotRepository>
       <uniqueVersion>false</uniqueVersion>
       <id>sakai-maven-snapshots-scp</id>
       <name>Sakai snapshot Repo</name>
-      <url>scp://source.sakaiproject.org/var/www/html/maven2-snapshots</url>
+      <url>scpexe://source.sakaiproject.org/var/www/html/maven2-snapshots</url>
     </snapshotRepository>
     <downloadUrl>http://source.sakaiproject.org/maven2/</downloadUrl>
   </distributionManagement>
