@@ -3,14 +3,17 @@
 #set( $symbol_escape = '\' )
 package ${package}.tool.pages;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.feedback.FeedbackMessage;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnLoadHeaderItem;
+import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.markup.html.IHeaderContributor;
-import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -19,7 +22,6 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.request.resource.PackageResourceReference;
 
 import ${package}.logic.ProjectLogic;
 import ${package}.logic.SakaiProxy;
@@ -32,7 +34,7 @@ import ${package}.logic.SakaiProxy;
  * 
  * <p>It also allows us to setup the API injection and any other common methods, which are then made available in the other pages.
  * 
- * @author Steve Swinsburg (steve.swinsburg@anu.edu.au)
+ * @author Steve Swinsburg (steve.swinsburg@gmail.com)
  *
  */
 public class BasePage extends WebPage implements IHeaderContributor {
@@ -60,6 +62,7 @@ public class BasePage extends WebPage implements IHeaderContributor {
 		firstLink = new Link<Void>("firstLink") {
 			private static final long serialVersionUID = 1L;
 			public void onClick() {
+				
 				setResponsePage(new FirstPage());
 			}
 		};
@@ -105,9 +108,9 @@ public class BasePage extends WebPage implements IHeaderContributor {
         			message.getLevel() == FeedbackMessage.DEBUG ||
         			message.getLevel() == FeedbackMessage.FATAL ||
         			message.getLevel() == FeedbackMessage.WARNING){
-        			add(new SimpleAttributeModifier("class", "alertMessage"));
+        			add(AttributeModifier.replace("class", "alertMessage"));
         		} else if(message.getLevel() == FeedbackMessage.INFO){
-        			add(new SimpleAttributeModifier("class", "success"));        			
+        			add(AttributeModifier.replace("class", "success"));        			
         		} 
 
         		return newMessageDisplayComponent;
@@ -123,7 +126,7 @@ public class BasePage extends WebPage implements IHeaderContributor {
 	 */
 	public void clearFeedback(FeedbackPanel f) {
 		if(!f.hasFeedbackMessage()) {
-			f.add(new SimpleAttributeModifier("class", ""));
+			f.add(AttributeModifier.replace("class", ""));
 		}
 	}
 	
@@ -151,24 +154,17 @@ public class BasePage extends WebPage implements IHeaderContributor {
 	 * 
 	 */
 	public void renderHead(IHeaderResponse response) {
+		//get the Sakai skin header fragment from the request attribute
+		HttpServletRequest request = (HttpServletRequest)getRequest().getContainerRequest();
 		
+		response.render(StringHeaderItem.forString((String)request.getAttribute("sakai.html.head")));
+		response.render(OnLoadHeaderItem.forScript("setMainFrameHeight( window.name )"));
 		
-		//get Sakai skin
-		String skinRepo = sakaiProxy.getSkinRepoProperty();
-		String toolCSS = sakaiProxy.getToolSkinCSS(skinRepo);
-		String toolBaseCSS = skinRepo + "/tool_base.css";
-		
-		//Sakai additions
-		response.renderJavaScriptReference(new PackageResourceReference("/library/js/headscripts.js"));
-		response.renderCSSReference(toolBaseCSS);
-		response.renderCSSReference(toolCSS);
-		response.renderOnLoadJavaScript("setMainFrameHeight( window.name )");
 		
 		//Tool additions (at end so we can override if required)
-		response.renderString("<meta http-equiv=${symbol_escape}"Content-Type${symbol_escape}" content=${symbol_escape}"text/html; charset=UTF-8${symbol_escape}" />");
+		response.render(StringHeaderItem.forString("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />"));
 		//response.renderCSSReference("css/my_tool_styles.css");
 		//response.renderJavascriptReference("js/my_tool_javascript.js");
-		
 	}
 	
 	
@@ -177,7 +173,6 @@ public class BasePage extends WebPage implements IHeaderContributor {
 	 */
 	protected void disableLink(Link<Void> l) {
 		l.add(new AttributeAppender("class", new Model<String>("current"), " "));
-		l.setRenderBodyOnly(true);
 		l.setEnabled(false);
 	}
 	

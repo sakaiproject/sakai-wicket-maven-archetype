@@ -64,27 +64,6 @@ public class SakaiProxyImpl implements SakaiProxy {
 	/**
  	* {@inheritDoc}
  	*/
-	public String getSkinRepoProperty(){
-		return serverConfigurationService.getString("skin.repo");
-	}
-	
-	/**
- 	* {@inheritDoc}
- 	*/
-	public String getToolSkinCSS(String skinRepo){
-		
-		String skin = siteService.findTool(sessionManager.getCurrentToolSession().getPlacementId()).getSkin();			
-		
-		if(skin == null) {
-			skin = serverConfigurationService.getString("skin.default");
-		}
-		
-		return skinRepo + "/" + skin + "/tool.css";
-	}
-	
-	/**
- 	* {@inheritDoc}
- 	*/
 	public boolean getConfigParam(String param, boolean dflt) {
 		return serverConfigurationService.getBoolean(param, dflt);
 	}

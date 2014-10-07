@@ -4,7 +4,7 @@
 
   <groupId>org.sakaiproject.maven-archetype</groupId>
   <artifactId>sakai-wicket-maven-archetype</artifactId>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.4-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>Sakai Wicket Maven Archetype</name>

@@ -19,6 +19,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 
+import com.steve.model.Thing;
+
 import ${package}.model.Thing;
 
 /**
@@ -115,12 +117,14 @@ public class ThirdPage extends BasePage {
 		
 		
 		@Override
-		public Iterator<Thing> iterator(int first, int count){
-			return getData().subList(first, first + count).iterator();
+		public Iterator<Thing> iterator(long first, long count){
+			int f = (int) first; //not ideal but ok for demo
+			int c = (int) count; //not ideal but ok for demo
+			return getData().subList(f, f + c).iterator();
 		}
 
 		@Override
-		public int size(){
+		public long size(){
 			return getData().size();
 		}
 

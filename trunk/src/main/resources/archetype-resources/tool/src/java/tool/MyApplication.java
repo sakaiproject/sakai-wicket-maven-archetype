@@ -20,7 +20,7 @@ import ${package}.tool.pages.FirstPage;
 /**
  * Main application class for our app
  * 
- * @author Steve Swinsburg (steve.swinsburg@anu.edu.au)
+ * @author Steve Swinsburg (steve.swinsburg@gmail.com)
  * @author David F. Torres
  * @author Michael Mertins (mertins@zedat.fu-berlin.de)
  *
