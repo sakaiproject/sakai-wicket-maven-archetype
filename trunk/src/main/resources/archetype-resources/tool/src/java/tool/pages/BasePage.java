@@ -19,6 +19,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.request.resource.PackageResourceReference;
 
 import ${package}.logic.ProjectLogic;
 import ${package}.logic.SakaiProxy;
@@ -158,10 +159,10 @@ public class BasePage extends WebPage implements IHeaderContributor {
 		String toolBaseCSS = skinRepo + "/tool_base.css";
 		
 		//Sakai additions
-		response.renderJavascriptReference("/library/js/headscripts.js");
+		response.renderJavaScriptReference(new PackageResourceReference("/library/js/headscripts.js"));
 		response.renderCSSReference(toolBaseCSS);
 		response.renderCSSReference(toolCSS);
-		response.renderOnLoadJavascript("setMainFrameHeight( window.name )");
+		response.renderOnLoadJavaScript("setMainFrameHeight( window.name )");
 		
 		//Tool additions (at end so we can override if required)
 		response.renderString("<meta http-equiv=${symbol_escape}"Content-Type${symbol_escape}" content=${symbol_escape}"text/html; charset=UTF-8${symbol_escape}" />");

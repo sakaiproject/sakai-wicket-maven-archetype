@@ -11,10 +11,11 @@
 	<version>${version}</version>
 	
 	<parent>
-		<groupId>org.sakaiproject.purepoms</groupId>
-		<artifactId>sakai-standard-tool</artifactId>
-		<version>2.8.4</version>
-	</parent>
+    	<groupId>org.sakaiproject</groupId>
+    	<artifactId>master</artifactId>
+    	<version>10.1</version>
+    	<relativePath>../master/pom.xml</relativePath>
+  	</parent>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,12 +42,13 @@
 			<dependency>
 				<groupId>org.apache.wicket</groupId>
 				<artifactId>wicket</artifactId>
-				<version>1.4.17</version>
+				<version>1.5.10</version>
+                <type>pom</type>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.wicket</groupId>
 				<artifactId>wicket-spring</artifactId>
-				<version>1.4.17</version>
+				<version>1.5.10</version>
 	    	</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -98,34 +100,6 @@
 
 		</dependencies>
 	</dependencyManagement>
-	
-	
-	<repositories>
-		<repository>
-			<id>sakai-maven</id>
-			<name>Sakai Maven Repo</name>
-			<layout>default</layout>
-			<url>http://source.sakaiproject.org/maven2</url>
-			<releases>
-            </releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	
-	<pluginRepositories>
-		<pluginRepository>
-			<id>Sakai Plugin Repo</id>
-			<url>http://source.sakaiproject.org/maven2</url>
-			<releases>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	
 	
 	
 </project>

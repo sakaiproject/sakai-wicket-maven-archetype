@@ -12,17 +12,24 @@
   <developers>
     <developer>
       <name>Steve Swinsburg</name>
-      <email>steve.swinsburg@anu.edu.au</email>
-      <organization>The Australian National University</organization>
+      <email>steve.swinsburg@gmail.com</email>
       <timezone>10</timezone>
     </developer>
   </developers>
-  
+  <contributors>
+    <contributor>
+      <name>Michael Mertins</name>
+      <email>mertins@zedat.fu-berlin.de</email>
+      <organization>Freie Universität Berlin</organization>
+      <timezone>1</timezone>
+    </contributor>
+  </contributors>
+
   <organization>
     <name>The Sakai Foundation</name>
     <url>http://www.sakaiproject.org</url>
   </organization>
-    
+
   <inceptionYear>2011</inceptionYear>
 
   <build>
@@ -32,7 +39,7 @@
         <artifactId>archetype-packaging</artifactId>
         <version>2.0</version>
       </extension>
-      
+
 	  <extension>
 		<groupId>org.apache.maven.wagon</groupId>
 		<artifactId>wagon-ssh-external</artifactId>
@@ -65,11 +72,11 @@
     </snapshotRepository>
     <downloadUrl>http://source.sakaiproject.org/maven2/</downloadUrl>
   </distributionManagement>
-  
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-  
+
 	<licenses>
 		<license>
 			<name>Educational Community License, Version 2.0</name>
