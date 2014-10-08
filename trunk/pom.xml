@@ -4,7 +4,7 @@
 
   <groupId>org.sakaiproject.maven-archetype</groupId>
   <artifactId>sakai-wicket-maven-archetype</artifactId>
-  <version>1.4</version>
+  <version>1.5-SNAPSHOT</version>
   <packaging>maven-archetype</packaging>
 
   <name>Sakai Wicket Maven Archetype</name>
@@ -86,9 +86,9 @@
 	</licenses>
 	
 	<scm>
-    	<connection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</connection>
-    	<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</developerConnection>
-    	<url>https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</url>
+    	<connection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</connection>
+    	<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</developerConnection>
+    	<url>https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</url>
   	</scm>
   
 </project>
