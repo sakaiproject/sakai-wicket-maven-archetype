@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sakaiproject.maven-archetype</groupId>
+  <artifactId>sakai-wicket-maven-archetype</artifactId>
+  <version>1.4</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>Sakai Wicket Maven Archetype</name>
+
+  <developers>
+    <developer>
+      <name>Steve Swinsburg</name>
+      <email>steve.swinsburg@gmail.com</email>
+      <timezone>10</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Michael Mertins</name>
+      <email>mertins@zedat.fu-berlin.de</email>
+      <organization>Freie Universität Berlin</organization>
+      <timezone>1</timezone>
+    </contributor>
+  </contributors>
+
+  <organization>
+    <name>The Sakai Foundation</name>
+    <url>http://www.sakaiproject.org</url>
+  </organization>
+
+  <inceptionYear>2011</inceptionYear>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>2.0</version>
+      </extension>
+
+	  <extension>
+		<groupId>org.apache.maven.wagon</groupId>
+		<artifactId>wagon-ssh-external</artifactId>
+		<version>2.2</version>
+	  </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>sakai-maven2-scp</id>
+      <name>Sakai maven2 repository</name>
+      <url>scpexe://source.sakaiproject.org/var/www/html/maven2</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>sakai-maven-snapshots-scp</id>
+      <name>Sakai snapshot Repo</name>
+      <url>scpexe://source.sakaiproject.org/var/www/html/maven2-snapshots</url>
+    </snapshotRepository>
+    <downloadUrl>http://source.sakaiproject.org/maven2/</downloadUrl>
+  </distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>Educational Community License, Version 2.0</name>
+			<url>http://www.osedu.org/licenses/ECL-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<scm>
+    	<connection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</connection>
+    	<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</developerConnection>
+    	<url>https://source.sakaiproject.org/contrib/archetypes/apache-wicket/tags/sakai-wicket-maven-archetype-1.4</url>
+  	</scm>
+  
+</project>
