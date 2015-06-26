@@ -14,7 +14,7 @@ The 1.1 and up releases also include multi database support via Spring JDBC. It 
 ## Getting started
 
 Run the following and follow the prompts:  
-`mvn archetype:generate -DarchetypeGroupId=org.sakaiproject.maven-archetype -DarchetypeArtifactId=sakai-wicket-maven-archetype \
+`mvn archetype:generate -DarchetypeGroupId=org.sakaiproject.maven-archetype -DarchetypeArtifactId=sakai-wicket-maven-archetype
 -DarchetypeVersion=1.5.0 -DgroupId=org.sakaiproject.example -DartifactId=exampleApp`
 
 The output of the above command will produce a project that you can build and deploy to Sakai via `mvn clean install sakai:deploy` or add to Eclipse and extend.
