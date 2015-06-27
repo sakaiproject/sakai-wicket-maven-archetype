@@ -60,9 +60,9 @@
 	</issueManagement>
 
 	<scm>
-		<connection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</connection>
-		<developerConnection>scm:svn:https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</developerConnection>
-		<url>https://source.sakaiproject.org/contrib/archetypes/apache-wicket/trunk</url>
+		<connection>scm:svn:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</connection>
+		<developerConnection>scm:svn:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</developerConnection>
+		<url>https://github.com/sakaiproject/sakai-wicket-maven-archetype/</url>
 	</scm>
 	
 	<prerequisites>
