@@ -19,7 +19,6 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 
-import ${package}.model.Thing;
 
 /**
  * An example page. This interacts with a list of items from the database
