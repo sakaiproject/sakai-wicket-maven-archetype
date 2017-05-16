@@ -20,7 +20,7 @@ import ${package}.model.Thing;
 public class ThingMapper implements RowMapper{
 	
 	/* (non-Javadoc)
-	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
+	 * @see org.springframework.jdbc.core.RowMapper${symbol_pound}mapRow(java.sql.ResultSet, int)
 	 */
 	@Override
 	public Thing mapRow(ResultSet rs, int rowNum) throws SQLException {

@@ -21,6 +21,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
 
 import ${package}.model.Thing;
 
+
 /**
  * An example page. This interacts with a list of items from the database
  * 
@@ -160,7 +161,7 @@ public class ThirdPage extends BasePage {
 		}
 		
 		/**
-		 * @see java.lang.Object#hashCode()
+		 * @see java.lang.Object${symbol_pound}hashCode()
 		 */
 		public int hashCode() {
 			return Long.valueOf(id).hashCode();
@@ -170,7 +171,7 @@ public class ThirdPage extends BasePage {
 		 * used for dataview with ReuseIfModelsEqualStrategy item reuse strategy
 		 * 
 		 * @see org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy
-		 * @see java.lang.Object#equals(java.lang.Object)
+		 * @see java.lang.Object${symbol_pound}equals(java.lang.Object)
 		 */
 		public boolean equals(final Object obj){
 			if (obj == this){
@@ -187,7 +188,7 @@ public class ThirdPage extends BasePage {
 		}
 		
 		/**
-		 * @see org.apache.wicket.model.LoadableDetachableModel#load()
+		 * @see org.apache.wicket.model.LoadableDetachableModel${symbol_pound}load()
 		 */
 		protected Thing load(){
 			
