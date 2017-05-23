@@ -9,12 +9,12 @@ The app demonstrates how to get a Sakai tool styled, internationalised and regis
 The 1.1 and up releases also include multi database support via Spring JDBC. It could easily be used as a base for a real tool.
 
 ## Latest version
-1.5.0, based on Wicket 6.16.0
+1.6.0, based on Wicket 6.25.0
 
 ## Getting started
 
 Run the following and follow the prompts:  
 `mvn archetype:generate -DarchetypeGroupId=org.sakaiproject.maven-archetype -DarchetypeArtifactId=sakai-wicket-maven-archetype
--DarchetypeVersion=1.5.0 -DgroupId=org.sakaiproject.example -DartifactId=exampleApp`
+-DarchetypeVersion=1.6.0 -DgroupId=org.sakaiproject.example -DartifactId=exampleApp`
 
 The output of the above command will produce a project that you can build and deploy to Sakai via `mvn clean install sakai:deploy` or add to Eclipse and extend.
