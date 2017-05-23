@@ -12,7 +12,7 @@
 
 	<groupId>org.sakaiproject.maven-archetype</groupId>
 	<artifactId>sakai-wicket-maven-archetype</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.7-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 	
 	<description>
@@ -63,7 +63,8 @@
 		<connection>scm:git:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</connection>
 		<developerConnection>scm:git:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</developerConnection>
 		<url>https://github.com/sakaiproject/sakai-wicket-maven-archetype/</url>
-	</scm>
+	  <tag>HEAD</tag>
+  </scm>
 	
 	<prerequisites>
 		<maven>2.2.1</maven>
