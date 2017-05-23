@@ -21,7 +21,7 @@
 		The app demonstrates how to get a Sakai tool styled, internationalised and registered, setup your own APIs, wire them up with Spring and inject them via annotations. 
 		The 1.1 and up releases also include multi database support via Spring JDBC. It could easily be used as a base for a real tool.
 	</description>
-	<url>https://confluence.sakaiproject.org/display/BOOT/Sakai+Wicket+Maven+Archetype</url>
+	<url>https://github.com/sakaiproject/sakai-wicket-maven-archetype</url>
 
 	<developers>
 		<developer>
@@ -60,8 +60,8 @@
 	</issueManagement>
 
 	<scm>
-		<connection>scm:svn:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</connection>
-		<developerConnection>scm:svn:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</developerConnection>
+		<connection>scm:git:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</connection>
+		<developerConnection>scm:git:https://github.com/sakaiproject/sakai-wicket-maven-archetype/</developerConnection>
 		<url>https://github.com/sakaiproject/sakai-wicket-maven-archetype/</url>
 	</scm>
 	
