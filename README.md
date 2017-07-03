@@ -9,7 +9,7 @@ The app demonstrates how to get a Sakai tool styled, internationalised and regis
 The 1.1 and up releases also include multi database support via Spring JDBC. It could easily be used as a base for a real tool.
 
 ## Latest version
-1.6.0, based on Wicket 6.25.0
+1.6.0, based on Wicket 6.26.0
 
 ## Getting started
 
