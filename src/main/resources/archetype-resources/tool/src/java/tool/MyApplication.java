@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.tool;
 
-import org.apache.wicket.Page;
+
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.IRequestCycleListener;
@@ -43,9 +43,7 @@ public class MyApplication extends WebApplication {
 		//Remove the wicket specific tags from the generated markup
 		getMarkupSettings().setStripWicketTags(true);
 		
-		//Don't add any extra tags around a disabled link (default is <em></em>)
-		getMarkupSettings().setDefaultBeforeDisabledLink(null);
-		getMarkupSettings().setDefaultAfterDisabledLink(null);
+
 				
 		// On Wicket session timeout, redirect to main page
 		getApplicationSettings().setPageExpiredErrorPage(FirstPage.class);

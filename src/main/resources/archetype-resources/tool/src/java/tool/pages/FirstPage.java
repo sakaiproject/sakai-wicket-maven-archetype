@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.migrate.StringResourceModelMigration;
 import org.apache.wicket.model.StringResourceModel;
 
 /**
@@ -32,7 +33,8 @@ public class FirstPage extends BasePage {
 		String date = new SimpleDateFormat(DATE_FORMAT).format(d);
 		String time = new SimpleDateFormat(TIME_FORMAT).format(d);
 
-		add(new Label("time", new StringResourceModel("the.time", null, new String[] {date, time})));
+		StringResourceModel stringResourceModel = StringResourceModelMigration.of("the.time", null, new String[] {date, time});
+		add(new Label("time", stringResourceModel));
 		
 	}
 }
