@@ -55,6 +55,12 @@
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/webapp</directory>
+          <includes>
+            <include>**/*.xml</include>
+          </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
           <directory>src/resources</directory>
           <includes>
             <include>**/*.properties</include>
@@ -62,7 +68,7 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${rootArtifactId}-pack" dir="pack" name="${rootArtifactId}-pack">
+    <!-- <module id="${rootArtifactId}-pack" dir="pack" name="${rootArtifactId}-pack">
       <fileSets>
         <fileSet filtered="true" encoding="UTF-8">
           <directory>src/webapp</directory>
@@ -71,6 +77,6 @@
           </includes>
         </fileSet>
       </fileSets>
-    </module>
+    </module> -->
   </modules>
 </archetype-descriptor>

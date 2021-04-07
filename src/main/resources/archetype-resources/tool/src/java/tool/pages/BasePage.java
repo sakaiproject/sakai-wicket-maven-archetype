@@ -5,7 +5,7 @@ package ${package}.tool.pages;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -18,10 +18,13 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.migrate.StringResourceModelMigration;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import lombok.extern.slf4j.Slf4j;
+
 
 import ${package}.logic.ProjectLogic;
 import ${package}.logic.SakaiProxy;
@@ -37,10 +40,9 @@ import ${package}.logic.SakaiProxy;
  * @author Steve Swinsburg (steve.swinsburg@gmail.com)
  *
  */
+@Slf4j
 public class BasePage extends WebPage implements IHeaderContributor {
 
-	private static final Logger log = Logger.getLogger(BasePage.class); 
-	
 	@SpringBean(name="${package}.logic.SakaiProxy")
 	protected SakaiProxy sakaiProxy;
 	
@@ -58,7 +60,7 @@ public class BasePage extends WebPage implements IHeaderContributor {
 		log.debug("BasePage()");
 		
 		
-    	//first link
+		//first link
 		firstLink = new Link<Void>("firstLink") {
 			private static final long serialVersionUID = 1L;
 			public void onClick() {
@@ -67,7 +69,7 @@ public class BasePage extends WebPage implements IHeaderContributor {
 			}
 		};
 		firstLink.add(new Label("firstLinkLabel",new ResourceModel("link.first")).setRenderBodyOnly(true));
-		firstLink.add(new AttributeModifier("title", true, new ResourceModel("link.first.tooltip")));
+		firstLink.add(new AttributeModifier("title", new ResourceModel("link.first.tooltip")));
 		add(firstLink);
 		
 		
@@ -80,7 +82,7 @@ public class BasePage extends WebPage implements IHeaderContributor {
 			}
 		};
 		secondLink.add(new Label("secondLinkLabel",new ResourceModel("link.second")).setRenderBodyOnly(true));
-		secondLink.add(new AttributeModifier("title", true, new ResourceModel("link.second.tooltip")));
+		secondLink.add(new AttributeModifier("title", new ResourceModel("link.second.tooltip")));
 		add(secondLink);
 		
 		
@@ -92,8 +94,9 @@ public class BasePage extends WebPage implements IHeaderContributor {
 				setResponsePage(new ThirdPage());
 			}
 		};
-		thirdLink.add(new Label("thirdLinkLabel",new StringResourceModel("link.third", null, new String[] {"3"})).setRenderBodyOnly(true));
-		thirdLink.add(new AttributeModifier("title", true, new ResourceModel("link.third.tooltip")));
+		StringResourceModel stringResourceModel = StringResourceModelMigration.of("link.third", null, new String[] {"3"});
+		thirdLink.add(new Label("thirdLinkLabel", stringResourceModel).setRenderBodyOnly(true));
+		thirdLink.add(new AttributeModifier("title", new ResourceModel("link.third.tooltip")));
 		add(thirdLink);
 		
 		
@@ -129,23 +132,6 @@ public class BasePage extends WebPage implements IHeaderContributor {
 			f.add(AttributeModifier.replace("class", ""));
 		}
 	}
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	/**
