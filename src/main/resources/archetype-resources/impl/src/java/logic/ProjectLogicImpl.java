@@ -24,6 +24,12 @@ import ${package}.model.Thing;
 @Slf4j
 public class ProjectLogicImpl implements ProjectLogic {
 	
+	@Setter
+	private ProjectDao dao;
+	
+	@Setter
+	private Cache cache;
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -72,10 +78,6 @@ public class ProjectLogicImpl implements ProjectLogic {
 		log.info("init");
 	}
 	
-	@Setter
-	private ProjectDao dao;
-	
-	@Setter
-	private Cache cache;
+
 
 }

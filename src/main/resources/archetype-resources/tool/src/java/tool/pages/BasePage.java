@@ -3,11 +3,14 @@
 #set( $symbol_escape = '\' )
 package ${package}.tool.pages;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.Session;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -163,5 +166,22 @@ public class BasePage extends WebPage implements IHeaderContributor {
 	}
 	
 	
+	@Override
+	public Locale getLocale(){
+		Locale sakaiLocale = sakaiProxy.getCurrentUserLocale();
+		if (sakaiLocale != null) {
+			return sakaiLocale;
+		}
+		return super.getLocale();
+	}
+	
+
+	protected void initLocale(){
+		Locale l = getLocale();
+		if (l != null) {
+			Session s = getSession();
+			s.setLocale(l);
+		}
+	}
 	
 }

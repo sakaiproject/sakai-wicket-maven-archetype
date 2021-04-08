@@ -3,6 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.logic;
 
+import java.util.Locale;
+
+
 /**
  * An interface to abstract all Sakai related API calls in a central method that can be injected into our app.
  * 
@@ -60,4 +63,9 @@ public interface SakaiProxy {
 	 * @return
 	 */
 	public String getConfigParam(String param, String dflt);
+	
+	/**
+	 * @return
+	 */
+	public Locale getCurrentUserLocale();
 }
