@@ -43,6 +43,7 @@
                 </constructor-arg>
             </bean>
         </property>
+        <property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
     </bean>
     
     <!-- Cache: ttl=1 hour -->

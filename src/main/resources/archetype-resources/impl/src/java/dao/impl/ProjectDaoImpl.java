@@ -10,10 +10,11 @@ import java.util.NoSuchElementException;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.InvariantReloadingStrategy;
-import org.apache.log4j.Logger;
 
-import org.sakaiproject.component.cover.ServerConfigurationService;
+import org.sakaiproject.component.api.ServerConfigurationService;
 
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -28,11 +29,12 @@ import ${package}.model.Thing;
  * @author Steve Swinsburg (steve.swinsburg@anu.edu.au)
  *
  */
+@Slf4j
 public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
-	private static final Logger log = Logger.getLogger(ProjectDaoImpl.class);
 	
 	private PropertiesConfiguration statements;
+	@Setter private ServerConfigurationService serverConfigurationService;
 	
 	/**
 	 * {@inheritDoc}
@@ -102,13 +104,13 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 		log.info("init()");
 		
 		//setup the vendor
-		String vendor = ServerConfigurationService.getInstance().getString("vendor@org.sakaiproject.db.api.SqlService", null);
+		String vendor = serverConfigurationService.getString("vendor@org.sakaiproject.db.api.SqlService", null);
 		
 		//initialise the statements
 		initStatements(vendor);
 		
 		//setup tables if we have auto.ddl enabled.
-		boolean autoddl = ServerConfigurationService.getInstance().getBoolean("auto.ddl", true);
+		boolean autoddl = serverConfigurationService.getBoolean("auto.ddl", true);
 		if(autoddl) {
 			initTables();
 		}
